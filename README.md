@@ -83,3 +83,10 @@ The experiment compares CRU and GRU on high-frequency BTCUSDT tick data to evalu
 
 **Conclusion:**  
 CRU demonstrates a **clear modeling advantage** in irregular financial time-series forecasting.
+
+
+
+
+## 🙏 Acknowledgment
+
+I express my sincere gratitude to all the researchers whose work supported this project. Special thanks to **Schirmer, Klein, Gumbsch, and Friedrich** for introducing the Continuous Recurrent Unit (CRU) in their ICML publication, and to **K. Hoang** for providing the *“BTCUSDT Perpetual Future – All Transactions”* dataset on Kaggle. I am deeply thankful to **Dr. JingTao Yao** and the **University of Regina** for offering the academic environment and guidance through the CS715 course that made this research possible.
