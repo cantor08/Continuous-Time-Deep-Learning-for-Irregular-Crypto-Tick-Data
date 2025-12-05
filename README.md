@@ -19,11 +19,10 @@ This project explores how Continuous Recurrent Units (CRU) model irregularly sam
 
 ## 📂 Repository Structure
 
-.
-├── CS715_PROJECT.ipynb        # Main Google Colab notebook (modeling + evaluation)
-├── CS715_Report.pdf           # Full academic project report
-├── README.md                  # Documentation for GitHub repo
-└── data/                      # (Optional) dataset folder if downloaded locally
+- **CS715_PROJECT.ipynb** — Main Google Colab notebook (modeling + evaluation)
+- **Project_Report.pdf** — Complete academic project report
+- **README.md** — GitHub documentation for the project
+
 
 ## 🧠 Key Concepts
 
@@ -38,3 +37,49 @@ GRUs operate in discrete, fixed time steps. While effective for many tasks, they
 
 ### **4. High-Frequency Cryptocurrency Markets**
 BTCUSDT futures trades arrive rapidly and irregularly. Modeling these sequences requires architectures that understand temporal gaps and event-driven behavior.
+
+## ⚙️ Methodology
+
+### **1. Data Preprocessing**
+- Loaded BTCUSDT perpetual futures dataset (200,000+ trades)
+- Computed inter-trade time gaps (∆t) to capture irregularity
+- Normalized numerical features for stable training
+- Created sequences of 50 consecutive trades for supervised learning
+
+### **2. Model Training**
+- Implemented two models:
+  - **GRU** — standard discrete-time recurrent baseline
+  - **CRU** — continuous-time recurrent architecture with decay dynamics
+- Both models trained using:
+  - Binary cross-entropy loss
+  - Adam optimizer
+  - Chronological train/validation/test split
+
+### **3. Evaluation Metrics**
+- Accuracy  
+- Precision  
+- Recall  
+- F1-Score  
+- AUC  
+- Brier Score  
+- McNemar Test for statistical significance
+
+This pipeline ensures a fair and meaningful comparison between GRU and CRU in an irregular time-series environment.
+
+## 📊 Results Summary
+
+The experiment compares CRU and GRU on high-frequency BTCUSDT tick data to evaluate their ability to model irregular time intervals.
+
+| Model | Accuracy | F1 Score | AUC | Notes |
+|-------|----------|----------|------|------|
+| **GRU** | ~0.520 | ~0.383 | ~0.523 | Serves as the discrete-time baseline |
+| **CRU** | **~0.524** | **~0.437** | **~0.532** | Better handling of irregular ∆t improves performance |
+
+### **Key Findings**
+- CRU outperforms GRU in **all major metrics**.
+- Continuous-time decay dynamics help model irregular gaps more effectively.
+- McNemar Test indicates **statistically meaningful difference** (CRU > GRU).
+- Improvements are modest but consistent — expected in noisy high-frequency markets.
+
+**Conclusion:**  
+CRU demonstrates a **clear modeling advantage** in irregular financial time-series forecasting.
